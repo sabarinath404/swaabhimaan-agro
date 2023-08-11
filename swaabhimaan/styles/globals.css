@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #fff; 
+  }
+}
+
+
+
+.lg\:py-24 {
+    padding-top: 1rem;
+    padding-bottom: rem;
+}
+
+
+.custom-hr {
+  height: 3px; /* Set the height of the line */
+  background-color: #ffffff; /* Change to your desired color */
+  margin: 0rem 0; /* Adjust the margin as needed */
+  width: 90%; /* Set the width of the line */
+  margin-left: 5%; /* Set the left margin to create the gap */
+  margin-right: 5%; /* Set the right margin to create the gap */
+}
+/* body {
+ background-color: aqua;
+} */
+ul.horizontal-list {
+  list-style: none; /* Remove default list styles (bullets/numbers) */
+  padding: 0;
+  margin: 0;
+}
+
+
+.card {
+  position: relative;
+  width: 16.875em;
+  height: 23.5em;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 120ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 0.5em;
+  padding-bottom: 3.4em;
+}
+
+
+
+.card .title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  position: absolute;
+  left: 0.625em;
+  bottom: 1.875em;
+  font-weight: 400;
+  color: #000;
+}
+
+.card .price {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 0.9em;
+  position: absolute;
+  left: 0.625em;
+  bottom: 0.625em;
+  color: #000;
+}
+
+.card:hover::after {
+  bottom: 0;
+  opacity: 1;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+
+
+.text {
+  max-width: 55px;
+}
+
+.image {
+  background: rgb(241, 241, 241);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CategoryCard.css */
+.category-card {
+  width: calc(33.33% - 20px); 
+  --border-radius: 0.75rem;
+  --primary-color: #7257fa;
+  --secondary-color: #3c3852;
+  width: 210px;
+  font-family: "Arial";
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background: #f1f1f3;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
+  position: relative;
+}
+
+.category-card > * + * {
+  margin-top: 1.1em;
+}
+
+.category-card .category-card__content {
+  color: var(--secondary-color);
+  font-size: 0.86rem;
+}
+
+.category-card .category-card__title {
+  padding: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.category-card .category-card__date {
+  color: #6e6b80;
+  font-size: 0.8rem;
+}
+
+.category-card .category-card__arrow {
+  position: absolute;
+  background: var(--primary-color);
+  padding: 0.4rem;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  bottom: 0;
+  right: 0;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-card svg {
+  transition: 0.2s;
+  
+}
+
+/* hover */
+.category-card:hover .category-card__title {
+  color: var(--primary-color);
+ 
+}
+
+.category-card:hover .category-card__arrow {
+  background: #6072f7;
+}
+
+.category-card:hover .category-card__arrow svg {
+  transform: translateX(3px);
+}
+/* CategoryCard.css */
+.category-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+
+
+
+
+
+
+
+
+
+
+
