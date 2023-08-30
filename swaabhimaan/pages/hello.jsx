@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import firebase from 'firebase/app'; // Import Firebase if needed
-import 'firebase/firestore'; // Import Firestore if needed
-import addUser from './data';
 import axios from 'axios';
+import addUser from './data';
 
 const UserInputForm = () => {
   const [inputData, setInputData] = useState({
-    first: '',
-    last: '',
-    born: 0,
+    productName: '',
+    productId: 0,
+    price: 0,
+    description: '',
+    features: '',
   });
+
   const [selectedImage, setSelectedImage] = useState(null); // Track selected image file
 
   const handleInputChange = (event) => {
@@ -36,55 +37,72 @@ const UserInputForm = () => {
         formData.append('myImage', selectedImage);
         const { data } = await axios.post('/api/image', formData);
 
-        // Rename image using the first name
-        newImageName = `${inputData.first}_${data.imageName}`;
+        // Get the actual name of the uploaded image
+        newImageName = selectedImage.name;
       } catch (error) {
         console.error('Error uploading image:', error);
       }
     }
 
+    // Convert features string to an array
+    const featuresArray = inputData.features.split(',').map(feature => feature.trim());
+
     // Call the addUser function with modified data
     const inputDataWithImage = {
       ...inputData,
       imageName: newImageName,
+      productId: parseInt(inputData.productId),
+      price: parseInt(inputData.price),
+      features: featuresArray,
     };
     addUser(inputDataWithImage);
 
     // Add the user input and image data to Firebase if needed
-    try {
-      await firebase.firestore().collection('users').add(inputDataWithImage);
-    } catch (error) {
-      console.error('Error adding to Firebase:', error);
-    }
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
-          <label htmlFor="first">First Name: </label>
+          <label htmlFor="productName">Product Name: </label>
           <input
             type="text"
-            name="first"
-            value={inputData.first || ''}
+            name="productName"
+            value={inputData.productName || ''}
             onChange={handleInputChange}
           />
         </div>
         <div>
-          <label htmlFor="last">Last Name: </label>
+          <label htmlFor="productId">Product ID: </label>
           <input
             type="text"
-            name="last"
-            value={inputData.last || ''}
+            name="productId"
+            value={inputData.productId || ''}
             onChange={handleInputChange}
           />
         </div>
         <div>
-          <label htmlFor="born">Born: </label>
+          <label htmlFor="price">Price: </label>
           <input
             type="number"
-            name="born"
-            value={inputData.born || ''}
+            name="price"
+            value={inputData.price || ''}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Description: </label>
+          <textarea
+            name="description"
+            value={inputData.description || ''}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="features">Features: </label>
+          <textarea
+            name="features"
+            value={inputData.features || ''}
             onChange={handleInputChange}
           />
         </div>
